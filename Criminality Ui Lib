@@ -140,9 +140,7 @@ function library.new(library_title, cfg_location)
         IgnoreGuiInset = true,
     })
 
-	if syn then
-		syn.protect_gui(ScreenGui)
-	end
+
 
     local Cursor = library:create("ImageLabel", {
         Name = "Cursor",
@@ -186,7 +184,7 @@ function library.new(library_title, cfg_location)
         Size = UDim2.new(0, 700, 0, 500),
         Image = "http://www.roblox.com/asset/?id=7300333488",
         AutoButtonColor = false,
-        Modal = true,
+        Modal = false,
     }, ScreenGui)
 
     function menu.GetPosition()
@@ -230,9 +228,6 @@ function library.new(library_title, cfg_location)
         Size = UDim2.new(0, 586, 0, 446),
     }, ImageLabel)
 
-
-
-end
 
     local is_first_tab = true
     local selected_tab
