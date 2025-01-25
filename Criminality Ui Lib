@@ -142,6 +142,7 @@ function library.new(library_title, cfg_location)
 
 
 
+	--[[
     local Cursor = library:create("ImageLabel", {
         Name = "Cursor",
         BackgroundTransparency = 1,
@@ -153,6 +154,7 @@ function library.new(library_title, cfg_location)
     rs.RenderStepped:Connect(function()
         Cursor.Position = UDim2.new(0, mouse.X, 0, mouse.Y + 36)
     end)
+	]]
 
 	ScreenGui.Parent = game:GetService("CoreGui")
 
@@ -169,10 +171,10 @@ function library.new(library_title, cfg_location)
 		ScreenGui.Enabled = not ScreenGui.Enabled
         menu.open = ScreenGui.Enabled
 
-        while ScreenGui.Enabled do
+       --[[ while ScreenGui.Enabled do
             uis.MouseIconEnabled = true
             rs.RenderStepped:Wait()
-        end
+        end]]
 	end)
 
     local ImageLabel = library:create("ImageButton", {
